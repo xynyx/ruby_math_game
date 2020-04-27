@@ -1,32 +1,38 @@
 require 'pry'
 require './game_score'
-require './Players'
-require './questions'
+require './question'
 require './numbers'
 
-new_game = GameBoard.new
-player_1 = Players.new(1)
-player_2 = Players.new(2)
+game = GameBoard.new
 
-player_1.turn = true
+players = [1, 2]
 
-player_2_questions = Questions.new(2)
+while (game.Player_1_HP > 0 && game.Player_2_HP > 0) 
+  player_answering = 1
+  player_asking = 2
 
-player_2_questions.two_numbers
+  player_questions= Numbers.new(players[1])
 
-question_1 = Numbers.new(1, player_2_questions.number_1, player_2_questions.number_2)
+  player_questions.two_numbers
 
-question_1.question_prompt
+  question = Question.new(players[0], player_questions.number_1, player_questions.number_2)
 
-# puts player_2_questions.number_1
+  question.question_prompt
 
-binding.pry
+  if !question.correct
+    game.reduce_life(players[0])
+  end
 
-puts "done"
+  game.print_score
+  players.reverse!
+end
 
-# raise player_1_questions.inspect
-# puts player_1.turn
-# puts player_1.player
+print "Player #{players[0]} wins with a score of "
 
-# puts player_2.health
-# new_game
+if (game.Player_2_HP === 0)
+  puts "#{game.Player_1_HP}/3!"
+else
+  puts "#{game.Player_2_HP}/3!"
+end
+
+puts "GAME OVER!"
