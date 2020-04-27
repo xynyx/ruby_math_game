@@ -8,9 +8,6 @@ game = GameBoard.new
 players = [1, 2]
 
 while (game.Player_1_HP > 0 && game.Player_2_HP > 0) 
-  player_answering = 1
-  player_asking = 2
-
   player_questions= Numbers.new(players[1])
 
   player_questions.two_numbers
