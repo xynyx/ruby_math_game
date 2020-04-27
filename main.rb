@@ -20,9 +20,9 @@ question_1.question_prompt
 
 # puts player_2_questions.number_1
 
-# binding.pry
+binding.pry
 
-# puts "done"
+puts "done"
 
 # raise player_1_questions.inspect
 # puts player_1.turn

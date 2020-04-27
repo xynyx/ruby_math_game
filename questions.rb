@@ -9,8 +9,8 @@ class Questions
   def two_numbers
     # if !turn
       puts "Player #{player}: Please select two numbers between 1 and 20"
-      @number_1 = gets.chomp
-      @number_2 = gets.chomp
+      @number_1 = gets.chomp.to_i
+      @number_2 = gets.chomp.to_i
     # end
   end
 
